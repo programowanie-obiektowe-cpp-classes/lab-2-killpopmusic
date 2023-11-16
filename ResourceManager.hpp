@@ -23,6 +23,10 @@ class ResourceManager
         ~ResourceManager(){
             delete res;
         };
+
+        double get() const {
+            return res->get();
+        }
     private:
         Resource* res;
 
