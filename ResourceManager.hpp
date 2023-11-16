@@ -6,27 +6,24 @@ class ResourceManager
 {
     
     public:
-    ResourceManager(): res(new Resource){};
+        ResourceManager(): res(new Resource){};
 
-    ResourceManager(const ResourceManager& resM) : res(new Resource(*resM.res)) {};
+        ResourceManager(const ResourceManager& resM) : res(new Resource(*resM.res)) {};
 
     
-    ResourceManager& operator=(const ResourceManager& resM)
-    {
-        if(this!=&resM){
+        ResourceManager& operator=(const ResourceManager& resM)
+        {
+            if(this!=&resM){
+                delete res;
+                res = new Resource(*resM.res);
+            }
+            return *this;
+
+        };
+        ~ResourceManager(){
             delete res;
-            res = new Resource(*resM.res);
-        }
-        return *this;
-
-    };
-    ~ResourceManager(){
-        delete res;
-    }
+        };
     private:
-    Resource*res;
-
-    
-
+        Resource* res;
 
 };
